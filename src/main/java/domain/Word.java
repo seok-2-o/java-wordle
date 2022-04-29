@@ -13,11 +13,19 @@ public class Word {
 
     private List<String> word;
 
+    private Word(String word) {
+        this.word = Arrays.asList(word.toLowerCase().split(""));
+    }
+
     public Word(String word, WordProvider provider) {
         if(!provider.contains(word)) {
             throw new IllegalArgumentException("등록된 단어만 생성 가능합니다.");
         }
-        this.word = Arrays.asList(word.toLowerCase().split(""));;
+        this.word = Arrays.asList(word.toLowerCase().split(""));
+    }
+
+    public static Word todayWorld(WordProvider provider) {
+        return new Word(provider.getTodayWord());
     }
 
     public Matches match(Word other) {
