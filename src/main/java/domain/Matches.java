@@ -42,4 +42,11 @@ public class Matches {
     public int hashCode() {
         return Objects.hash(elements);
     }
+
+    @Override
+    public String toString() {
+        return "Matches{" +
+            "elements=" + elements +
+            '}';
+    }
 }
