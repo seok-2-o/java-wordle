@@ -4,7 +4,6 @@ import domain.Matches.Type;
 import infra.WordProvider;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 public class Word {
@@ -18,7 +17,7 @@ public class Word {
     }
 
     public Word(String word, WordProvider provider) {
-        if(!provider.contains(word)) {
+        if (!provider.contains(word)) {
             throw new IllegalArgumentException("등록된 단어만 생성 가능합니다.");
         }
         this.word = Arrays.asList(word.toLowerCase().split(""));
@@ -29,7 +28,7 @@ public class Word {
     }
 
     public Matches match(Word other) {
-        if(this.word.equals(other.word)) {
+        if (this.word.equals(other.word)) {
             return Matches.PERFECT;
         }
         List<String> temp = new ArrayList<>(this.word);
@@ -50,5 +49,10 @@ public class Word {
             }
         }
         return new Matches(List.of(result));
+    }
+
+    @Override
+    public String toString() {
+        return String.join("", word);
     }
 }

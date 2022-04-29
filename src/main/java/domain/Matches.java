@@ -4,8 +4,11 @@ import static domain.Matches.Type.MATCH;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import java.util.stream.Stream;
 
 public class Matches {
+
 
     public enum Type {
         MATCH,
@@ -24,6 +27,10 @@ public class Matches {
     public boolean isAllMatch() {
         return elements.stream()
             .allMatch(it -> it.equals(MATCH));
+    }
+
+    public Stream<Type> stream() {
+        return this.elements.stream();
     }
 
     @Override
